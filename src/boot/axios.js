@@ -5,9 +5,10 @@ import axios from "axios";
 // Note that if we wouldn't set any config here we do not need
 // a named export, as we could just `import axios from 'axios'`
 const axiosInstance = axios.create({
-    baseURL: process.env.ENV === 'development'
-    ? `http://localhost:${process.env.SERVER_PORT}`
-    : process.env.SERVER_PRODUCTION_URL
+  baseURL:
+    process.env.ENV === "development"
+      ? `http://localhost:${process.env.PORT}`
+      : process.env.SERVER_PRODUCTION_URL,
 });
 
 // for use inside Vue files through this.$axios

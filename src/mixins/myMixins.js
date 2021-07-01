@@ -2,6 +2,12 @@ import extractResponseMessage from "assets/js/extractResponseMessage";
 
 export default {
   methods: {
+    frontError(e) {
+      const error = typeof e === "string" ? e : JSON.stringify(e, null, 2);
+      this.$axios.post("apiV1/log_error", {
+        error: error,
+      });
+    },
     serverError(title, e) {
       let m;
       // in case of one argument, it is the message

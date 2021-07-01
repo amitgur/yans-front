@@ -25,6 +25,7 @@
               label="Password"
               :rules="[(val) => !!val || 'Field is required']"
             />
+            <q-toggle v-model="rememberMe" label="Remember Me"></q-toggle>
           </q-form>
         </q-card-section>
         <q-card-actions class="q-px-md">
@@ -38,13 +39,16 @@
           />
         </q-card-actions>
       </q-card>
-      <q-btn to="/sign-up">Sign up for new users</q-btn>
+      <q-btn color="primary" to="/sign-up" class="q-mt-sm"
+        >Sign up for new users</q-btn
+      >
     </div>
   </div>
 </template>
 
 <script>
 import myMixins from "src/mixins/myMixins";
+import { mapState } from "vuex";
 
 export default {
   name: "Login",
@@ -53,6 +57,7 @@ export default {
     return {
       username: null,
       password: null,
+      rememberMe: false,
     };
   },
   methods: {
@@ -66,19 +71,25 @@ export default {
       const user = {
         username: this.username,
         password: this.password,
+        rememberMe: this.rememberMe,
       };
-      let response;
       try {
-        response = await this.$axios.post("/apiV1/login_user", user);
+        const response = await this.$axios.post("/apiV1/login_user", user);
         // route to login
-        this.myDialog(response.data.msg);
-        if (response.data.status === "ok") {
-          this.$router.push("/");
-        }
+        this.$store.dispatch("Auth/signIn", response.data);
+        this.$router.push("/");
       } catch (err) {
         this.serverError(err);
       }
     },
+  },
+  computed: {
+    ...mapState("Auth", ["isSignIn"]),
+  },
+  created() {
+    if (this.isSignIn) {
+      this.$router.push("/");
+    }
   },
 };
 </script>

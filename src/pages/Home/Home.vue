@@ -8,24 +8,6 @@
             <h1 id="logo-title" class="hebrew-big">Your Title</h1>
             <h4 class="logo-subtitle q-mt-md">Your SubTitle</h4>
           </div>
-          <q-btn
-            to="/login"
-            style="width: 260px"
-            size="xl"
-            label="LOGIN"
-            v-show="!isSignIn"
-            class="q-mx-auto q-mb-md"
-            color="primary"
-          />
-          <q-btn
-            to="/sign-up"
-            style="width: 260px"
-            size="xl"
-            label="SIGN IN"
-            v-show="!isSignIn"
-            class="q-mx-auto"
-            color="green-5"
-          />
         </section>
 
         <section id="item1">
@@ -43,7 +25,6 @@
 import MyMenu from "components/MyMenu";
 import myMixins from "src/mixins/myMixins";
 import menuList from "pages/Home/menuList";
-import { mapState } from "vuex";
 export default {
   mixins: [myMixins],
   components: { MyMenu },
@@ -58,9 +39,6 @@ export default {
   },
   methods: {},
   mounted() {},
-  computed: {
-    ...mapState("Auth", ["isSignIn", "user"]),
-  },
   async created() {
     await this.$store.dispatch("Auth/checkSignIn");
   },

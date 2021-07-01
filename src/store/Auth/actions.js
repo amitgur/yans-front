@@ -1,9 +1,7 @@
 export async function signOut({ commit }) {
   return this._vm.$axios
-    .get("/apiV1/logout_user")
+    .post("/apiV1/logout_user")
     .then(async () => {
-      console.log("logging out user in bandpad-back");
-
       commit("setUser", null);
       commit("setIsSignIn", false);
     })
@@ -12,19 +10,26 @@ export async function signOut({ commit }) {
     });
 }
 
-export async function checkSignIn(context) {
+export async function signIn({ commit }, user) {
+  commit("setUser", user);
+  commit("setIsSignIn", true);
+  commit("setAuthChecked", true);
+}
+
+export async function checkSignIn({ getters, commit }) {
   return new Promise(async (resolve, reject) => {
-    if (!context.getters["getAuthChecked"]) {
-      context.commit("setAuthChecked", true);
+    let response;
+    if (!getters["getAuthChecked"]) {
+      commit("setAuthChecked", true);
       // call server for authentication
       try {
-        const response = await this._vm.$axios.get("/apiV1/get_user");
-        context.commit("setUser", response.data);
-        context.commit("setIsSignIn", true);
+        response = await this._vm.$axios.get("/apiV1/get_user");
+        commit("setUser", response.data);
+        commit("setIsSignIn", true);
         resolve();
-      } catch {
-        context.commit("setUser", null);
-        context.commit("setIsSignIn", false);
+      } catch (err) {
+        commit("setUser", null);
+        commit("setIsSignIn", false);
         resolve();
       }
     } else {

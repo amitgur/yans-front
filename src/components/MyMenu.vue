@@ -29,6 +29,44 @@
             >{{ menuItem.label }}</span
           ></q-btn
         >
+
+        <q-space />
+        <div>
+          <q-btn
+            class="q-mx-sm"
+            to="/sign-up"
+            label="SIGN UP"
+            v-show="!isSignIn"
+            :class="{
+              'menu-button': !scrollOn,
+              'menu-button-scroll': scrollOn,
+            }"
+            color="green-6"
+          />
+          <q-btn
+            class="q-mx-sm"
+            to="/login"
+            label="LOGIN"
+            v-show="!isSignIn"
+            :class="{
+              'menu-button': !scrollOn,
+              'menu-button-scroll': scrollOn,
+            }"
+            color="primary"
+          />
+          <q-btn
+            outline
+            class="q-mx-sm"
+            @click="logout"
+            label="LOGOUT"
+            v-show="isSignIn"
+            :class="{
+              'menu-button': !scrollOn,
+              'menu-button-scroll': scrollOn,
+            }"
+            color="primary"
+          />
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -55,6 +93,7 @@
 
 <script>
 import { scroll } from "quasar";
+import { mapState } from "vuex";
 const { getScrollTarget, setScrollPosition } = scroll;
 
 export default {
@@ -109,11 +148,35 @@ export default {
       const duration = 1000;
       setScrollPosition(target, offset, duration);
     },
+    logout() {
+      this.$store.dispatch("Auth/signOut");
+    },
+  },
+  computed: {
+    ...mapState("Auth", ["isSignIn", "user"]),
   },
 };
 </script>
 <style lang="scss" scoped>
 #header-toolbar {
   transition: height 1s;
+}
+
+.menu-button-scroll {
+  width: 100px;
+  height: 34px;
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 1s;
+}
+
+.menu-button {
+  width: 140px;
+  height: 60px;
+  margin-left: auto;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 1s;
 }
 </style>

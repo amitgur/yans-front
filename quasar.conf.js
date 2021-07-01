@@ -85,21 +85,20 @@ module.exports = function (ctx) {
       // OR use the equivalent chainWebpack()
       // with its own chain statements (CLI v0.16.2+)fi18
 
-      chainWebpack(chain, { isServer, isClient }) {},
+      // chainWebpack(chain, { isServer, isClient }) {},
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
-
-      proxy: {
-        // proxy all requests starting with /api
-        "/apiV1": {
+      port: parseInt(envParser.PORT, 10),
+      proxy: [
+        {
+          context: ["/apiV1"],
           target: `http://localhost:${parseInt(envParser.SERVER_PORT, 10)}`,
           changeOrigin: true,
         },
-      },
-      port: parseInt(envParser.PORT, 10),
+      ],
       open: false, // opens browser window automatically
     },
     // animations: 'all', // --- includes all animations
