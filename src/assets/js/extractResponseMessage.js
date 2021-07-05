@@ -25,7 +25,7 @@ export default function extractResponseMessage(e) {
   } else {
     message = e.hasOwnProperty("message") ? e.message : e;
   }
-  if (process.env.DEV) {
+  if (process.env.NODE_ENV) {
     console.error(JSON.stringify(e, null, 2));
   }
   return message;

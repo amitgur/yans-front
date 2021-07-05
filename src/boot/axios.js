@@ -6,7 +6,7 @@ import axios from "axios";
 // a named export, as we could just `import axios from 'axios'`
 const axiosInstance = axios.create({
   baseURL:
-    process.env.ENV === "development"
+    process.env.NODE_ENV === "development"
       ? `http://localhost:${process.env.PORT}`
       : process.env.SERVER_PRODUCTION_URL,
 });

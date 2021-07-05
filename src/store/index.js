@@ -14,15 +14,15 @@ Vue.use(Vuex);
 
 import Auth from "./Auth";
 
-export default function(/* { ssrContext } */) {
+export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      Auth
+      Auth,
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
-    strict: process.env.ENV
+    strict: process.env.NODE_ENV,
   });
 
   return Store;
