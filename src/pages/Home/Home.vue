@@ -11,10 +11,10 @@
         </section>
 
         <section id="item1">
-          <div class="bg-blue-grey-1" style="width: 90vw; height: 800px"></div>
+          <div class="bg-blue-grey-1" style="width: 100vw; height: 800px"></div>
         </section>
         <section id="item2">
-          <div class="bg-blue-grey-2" style="width: 90vw; height: 800px"></div>
+          <div class="bg-blue-grey-2" style="width: 100vw; height: 800px"></div>
         </section>
       </q-page>
     </q-page-container>
@@ -25,6 +25,7 @@
 import MyMenu from "components/MyMenu";
 import myMixins from "src/mixins/myMixins";
 import menuList from "pages/Home/menuList";
+
 export default {
   mixins: [myMixins],
   components: { MyMenu },

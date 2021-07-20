@@ -4,7 +4,7 @@
   >
     <div class="column">
       <h3 class="text-center q-mt-xs">Login</h3>
-      <q-card square bordered class="q-pa-lg shadow-1">
+      <q-card square bordered class="q-pa-lg shadow-1 login">
         <q-card-section>
           <q-form class="q-gutter-md">
             <q-input
@@ -94,4 +94,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.login {
+  min-width: 20em;
+}
+</style>

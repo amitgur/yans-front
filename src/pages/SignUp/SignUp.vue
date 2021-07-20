@@ -4,7 +4,7 @@
   >
     <div class="column">
       <h3 class="text-center q-mt-xs">Sign Up</h3>
-      <q-card square bordered class="q-pa-lg shadow-1">
+      <q-card square bordered class="q-pa-lg shadow-1 signup">
         <q-card-section>
           <q-form class="q-gutter-md">
             <q-input
@@ -25,7 +25,7 @@
               label="Full Name"
               :rules="[(val) => !!val || 'Field is required']"
             />
-            <p>Enter password with minimum 4 letters or numbers</p>
+            <p class="hint">Enter password with minimum 4 letters or numbers</p>
             <q-input
               square
               filled
@@ -113,4 +113,11 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.signup {
+  min-width: 22em;
+}
+.hint {
+  opacity: 0.5;
+}
+</style>
