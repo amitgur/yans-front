@@ -10,6 +10,8 @@
           </div>
         </section>
 
+        <h1>{{ language?.home?.title }}</h1>
+
         <section id="item1">
           <div class="bg-blue-grey-1" style="width: 90vw; height: 800px"></div>
         </section>
@@ -25,6 +27,7 @@
 import MyMenu from "components/MyMenu";
 import myMixins from "src/mixins/myMixins";
 import menuList from "pages/Home/menuList";
+import { mapState } from "vuex";
 export default {
   mixins: [myMixins],
   components: { MyMenu },
@@ -39,8 +42,12 @@ export default {
   },
   methods: {},
   mounted() {},
+  computed: {
+    ...mapState("Auth", ["language"]),
+  },
   async created() {
     await this.$store.dispatch("Auth/checkSignIn");
+    await this.$store.dispatch("Auth/dispatchLanguage");
   },
 };
 </script>

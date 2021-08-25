@@ -9,7 +9,9 @@
   "private": false,
   "scripts": {
     "start": "quasar dev",
-    "build": "quasar build"
+    "build": "quasar build",
+    "deployTest": "rsync -aP dist/spa/ bandpad@bandpadtest.com:bandpad/yans-front"
+
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
