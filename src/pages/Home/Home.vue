@@ -10,7 +10,7 @@
           </div>
         </section>
 
-        <h1>{{ language?.home?.title }}</h1>
+        <h1>{{ language }}</h1>
 
         <section id="item1">
           <div class="bg-blue-grey-1" style="width: 90vw; height: 800px"></div>

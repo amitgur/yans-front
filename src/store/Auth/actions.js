@@ -44,10 +44,10 @@ export async function dispatchLanguage({ getters, commit }) {
     if (!getters["getLanguage"]) {
       try {
         response = await this._vm.$axios.get(
-          "https://yans.bandpadtest.com/apiV1/apiV1/get_language",
-          {
-            params: { language: "he" },
-          }
+          "https://yans.bandpadtest.com/apiV1/get_language"
+          // {
+          //   params: { language: "he" },
+          // }
         );
         commit("setLanguage", response.data);
         resolve();

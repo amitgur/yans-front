@@ -10,7 +10,7 @@
   "scripts": {
     "start": "quasar dev",
     "build": "quasar build",
-    "deployTest": "rsync -aP dist/spa/ bandpad@bandpadtest.com:bandpad/yans-front"
+    "deployTest": "quasar build && rsync -aP dist/spa/ bandpad@bandpadtest.com:bandpad/yans-front"
 
   },
   "dependencies": {
