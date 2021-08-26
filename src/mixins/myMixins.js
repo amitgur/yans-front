@@ -41,5 +41,12 @@ export default {
         color: "blue-7",
       });
     },
+    getTranslate(page, token) {
+      if (this.language && this.language[page]) {
+        return this.language[page][token];
+      } else {
+        return "";
+      }
+    },
   },
 };

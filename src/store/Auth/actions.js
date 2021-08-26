@@ -50,6 +50,7 @@ export async function dispatchLanguage({ getters, commit }) {
           // }
         );
         commit("setLanguage", response.data);
+        console.log(response);
         resolve();
       } catch (err) {
         reject(err);
