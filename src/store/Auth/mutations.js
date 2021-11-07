@@ -9,7 +9,3 @@ export function setIsSignIn(state, status) {
 export function setUser(state, user) {
   state.user = user;
 }
-
-export function setLanguage(state, payload) {
-  state.language = payload;
-}

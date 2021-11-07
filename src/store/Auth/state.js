@@ -3,6 +3,5 @@ export default function () {
     user: null,
     isSignIn: false,
     authChecked: false,
-    language: null,
   };
 }

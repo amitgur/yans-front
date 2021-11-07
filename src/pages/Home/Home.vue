@@ -12,11 +12,11 @@
 
         <h1>{{ getTranslate("home", "title") }}</h1>
 
-        <section id="item1">
-          <div class="bg-blue-grey-1" style="width: 90vw; height: 800px"></div>
+        <section id="item1" class="full-width">
+          <div class="bg-blue-grey-1 full-width" style="height: 800px"></div>
         </section>
-        <section id="item2">
-          <div class="bg-blue-grey-2" style="width: 90vw; height: 800px"></div>
+        <section id="item2" class="full-width">
+          <div class="bg-blue-grey-2 full-width" style="height: 800px"></div>
         </section>
       </q-page>
     </q-page-container>
@@ -43,11 +43,11 @@ export default {
   methods: {},
   mounted() {},
   computed: {
-    ...mapState("Auth", ["language"]),
+    ...mapState("Language", ["language"]),
   },
   async created() {
     await this.$store.dispatch("Auth/checkSignIn");
-    await this.$store.dispatch("Auth/dispatchLanguage");
+    await this.$store.dispatch("Language/dispatchLanguage");
   },
 };
 </script>

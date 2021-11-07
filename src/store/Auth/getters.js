@@ -9,7 +9,3 @@ export function getIsSignIn(state) {
 export function getUser(state) {
   return state.user;
 }
-
-export function getLanguage(state) {
-  return state.language;
-}

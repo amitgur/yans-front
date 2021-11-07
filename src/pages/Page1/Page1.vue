@@ -16,7 +16,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState("Auth", ["language"]),
+    ...mapState("Language", ["language"]),
   },
 };
 </script>
