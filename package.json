@@ -11,17 +11,17 @@
     "start": "quasar dev",
     "build": "quasar build",
     "deployTest": "quasar build && rsync -aP dist/spa/ bandpad@bandpadtest.com:bandpad/yans-front"
-
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.11.4",
     "axios": "^0.18.1",
     "imports-loader": "^0.8.0",
     "less-loader": "^6.1.0",
-    "quasar": "^1.15.21"
+    "quasar": "2",
+    "vuex": "4"
   },
   "devDependencies": {
-    "@quasar/app": "^1.9.6",
+    "@quasar/app": "3",
     "@quasar/quasar-app-extension-dotenv": "^1.1.0"
   },
   "engines": {
