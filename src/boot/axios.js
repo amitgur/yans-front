@@ -1,19 +1,23 @@
-import Vue from "vue";
+import { boot } from "quasar/wrappers";
 import axios from "axios";
 
-// We create our own axios instance and set a custom base URL.
-// Note that if we wouldn't set any config here we do not need
-// a named export, as we could just `import axios from 'axios'`
-const axiosInstance = axios.create({
+const api = axios.create({
   baseURL:
     process.env.NODE_ENV === "development"
       ? `http://localhost:${process.env.PORT}`
       : process.env.SERVER_PRODUCTION_URL,
 });
 
-// for use inside Vue files through this.$axios
-Vue.prototype.$axios = axiosInstance;
+export default boot(({ app }) => {
+  // for use inside Vue files (Options API) through this.$axios and this.$api
 
-// Here we define a named export
-// that we can later use inside .js files:
-export { axiosInstance };
+  app.config.globalProperties.$axios = axios;
+  // ^ ^ ^ this will allow you to use this.$axios (for Vue Options API form)
+  //       so you won't necessarily have to import axios in each vue file
+
+  app.config.globalProperties.$api = api;
+  // ^ ^ ^ this will allow you to use this.$api (for Vue Options API form)
+  //       so you can easily perform requests against your app's API
+});
+
+export { axios, api };

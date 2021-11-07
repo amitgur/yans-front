@@ -92,9 +92,9 @@
 </template>
 
 <script>
-import { scroll } from "quasar";
 import { mapState } from "vuex";
-const { getScrollTarget, setScrollPosition } = scroll;
+import { scroll } from "quasar";
+const { getScrollTarget, setVerticalScrollPosition } = scroll;
 
 export default {
   name: "MyMenu",
@@ -110,7 +110,7 @@ export default {
   methods: {
     // change menu height on scroll
     onScroll(info) {
-      if (info.position > 50) {
+      if (info.position.top > 50) {
         this.headerHight = 40;
         this.scrollOn = true;
       } else {
@@ -146,7 +146,7 @@ export default {
       const target = getScrollTarget(ele);
       const offset = ele.offsetTop;
       const duration = 1000;
-      setScrollPosition(target, offset, duration);
+      setVerticalScrollPosition(target, offset, duration);
     },
     logout() {
       this.$store.dispatch("Auth/signOut");

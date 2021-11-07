@@ -38,10 +38,14 @@ const routes = [
 
 // Always leave this as last one
 if (process.env.MODE !== "ssr") {
-  routes.push({
-    path: "*",
-    component: () => import("pages/Error404.vue"),
-  });
+  routes.push(
+    // Always leave this as last one,
+    // but you can also remove it
+    {
+      path: "/:catchAll(.*)*",
+      component: () => import("pages/Error404.vue"),
+    }
+  );
 }
 
 export default routes;

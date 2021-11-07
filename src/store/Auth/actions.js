@@ -1,5 +1,7 @@
+import { api } from "boot/axios";
+
 export async function signOut({ commit }) {
-  return this._vm.$axios
+  return api
     .post("/apiV1/logout_user")
     .then(async () => {
       commit("setUser", null);
@@ -23,7 +25,7 @@ export async function checkSignIn({ getters, commit }) {
       commit("setAuthChecked", true);
       // call server for authentication
       try {
-        response = await this._vm.$axios.get("/apiV1/get_user");
+        response = await api.get("/apiV1/get_user");
         commit("setUser", response.data);
         commit("setIsSignIn", true);
         resolve();
@@ -43,7 +45,7 @@ export async function dispatchLanguage({ getters, commit }) {
     let response;
     if (!getters["getLanguage"]) {
       try {
-        response = await this._vm.$axios.get(
+        response = await api.get(
           "https://yans.bandpadtest.com/apiV1/get_language"
           // {
           //   params: { language: "he" },
