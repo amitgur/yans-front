@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh lpr lFf">
-    <my-menu :menu-list="menuList" language="he" />
+    <my-menu :menu-list="menuList" />
     <q-page-container>
       <q-page class="column items-center">
         <section id="top-section">
@@ -10,7 +10,7 @@
           </div>
         </section>
 
-        <h1>{{ getTranslate("home", "title") }}</h1>
+        <h1>Your Title</h1>
 
         <section id="item1" class="full-width">
           <div class="bg-blue-grey-1 full-width" style="height: 800px"></div>
@@ -27,7 +27,7 @@
 import MyMenu from "components/MyMenu";
 import myMixins from "src/mixins/myMixins";
 import menuList from "pages/Home/menuList";
-import { mapState } from "vuex";
+
 export default {
   mixins: [myMixins],
   components: { MyMenu },
@@ -42,12 +42,9 @@ export default {
   },
   methods: {},
   mounted() {},
-  computed: {
-    ...mapState("Language", ["language"]),
-  },
   async created() {
     await this.$store.dispatch("Auth/checkSignIn");
-    await this.$store.dispatch("Language/dispatchLanguage");
+
   },
 };
 </script>

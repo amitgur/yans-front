@@ -9,15 +9,12 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 export default {
   name: "Page1",
   data() {
     return {};
   },
-  computed: {
-    ...mapState("Language", ["language"]),
-  },
+
 };
 </script>
 
