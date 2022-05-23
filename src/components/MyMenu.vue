@@ -73,19 +73,17 @@
     <!-- mobile menu -->
     <q-drawer overlay v-model="left" side="left" bordered>
       <q-list>
-        <template>
-          <q-item
-            v-for="(menuItem, index) in menuList"
-            :key="index"
-            clickable
-            @click="clickMenuItem(menuItem)"
-            v-ripple
-          >
-            <q-item-section>
-              {{ menuItem.label }}
-            </q-item-section>
-          </q-item>
-        </template>
+        <q-item
+          v-for="(menuItem, index) in menuList"
+          :key="index"
+          clickable
+          @click="clickMenuItem(menuItem)"
+          v-ripple
+        >
+          <q-item-section>
+            {{ menuItem.label }}
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
   </div>
